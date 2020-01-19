@@ -41,7 +41,7 @@ Intially I was not able to push a simple bot to heroku, but yeah googling a lot 
   heroku create app_name
 - If you have already created app then select it:
   ```python
-  heroku git:remote -a app_pname
+  heroku git:remote -a app_name
 - Or else continue:
   ```python
   git add -f bot.py Procfile requirements.txt __init__.py
