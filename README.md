@@ -63,3 +63,6 @@ If it is not running then we have to reset dynos:
   heroku ps:scale worker=1
 Now it should be running fine! Enjoy :)  
   
+### Working Example
+
+![working](https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/blob/master/Working.gif)
