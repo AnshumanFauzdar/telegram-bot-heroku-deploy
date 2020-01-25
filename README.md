@@ -1,6 +1,22 @@
 # Intial Deploy to heroku
 Intially I was not able to push a simple bot to heroku, but yeah googling a lot made it work!
 
+## Very Initial Steps [NOOB Steps]
+1. Install Telegram :)
+2. Create a telegram bot by talking to [Bot Father](https://t.me/botfather)
+3. Install python in your computer, if you are on windows follow [this](https://www.python.org/downloads/windows/)
+4. Install git, follow [this](https://git-scm.com/download/win)
+5. Install Heroku account [here](https://signup.heroku.com/login)
+6. Install Heroku CLI from [here](https://devcenter.heroku.com/articles/heroku-cli)
+7. Install editor of your choice, I preffer [Atom](https://atom.io)
+
+### Step 0 [Optional]:
+- Just git clone this repository and start working by editing the code
+   ```git
+   git clone https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy.git
+   cd telegram-bot-heroku-deploy
+- Or follow steps below!   
+   
 ### Step 1:
 - Create your bot like we have bot.py and write any python code that is intially working on your local machine!
 ### Step 2:
@@ -66,3 +82,6 @@ Now it should be running fine! Enjoy :)
 ### Working Example
 
 ![working](https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/blob/master/Working.gif)
+
+### Want a video tutorial?
+- Go to issues and submit your requirement!
