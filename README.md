@@ -84,4 +84,4 @@ Now it should be running fine! Enjoy :)
 ![working](https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/blob/master/Working.gif)
 
 ### Want a video tutorial?
-- Go to issues and submit your requirement!
+- Go [Here!](https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/issues/1)
