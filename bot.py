@@ -13,15 +13,15 @@ logger = logging.getLogger(__name__)
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    update.message.reply_text('hn bhai ke dard se?')
+    update.message.reply_text('Hey this is your bot!')
 
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Nhi meri taraf mat dekhiye mai kuch nhi kar paaonga')
+    update.message.reply_text('Currently I am in Alpha stage, help me also!')
 
 def piracy(update, context):
-    update.message.reply_text('Abhi mai to kuch nhi kr skta, par aap @LeeluPradhanBot pe jaao!')
+    update.message.reply_text('Ahhan, FBI wants to know your location!')
 
 
 def echo(update, context):
