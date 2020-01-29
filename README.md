@@ -12,7 +12,7 @@ Intially I was not able to push a simple bot to heroku, but yeah googling a lot 
 
 ### Step 0 [Optional]:
 - Just git clone this repository and start working by editing the code
-   ```python
+   ```shell
    git clone https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy.git
    cd telegram-bot-heroku-deploy
 - Or follow steps below!   
