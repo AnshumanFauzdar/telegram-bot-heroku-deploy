@@ -2,6 +2,6 @@
   "name": "Heroku Telegram python deploy",
   "description": "Heroku Telegram python deploy",
   "repository": "https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy",
-  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "logo": "http://pngimg.com/uploads/telegram/telegram_PNG36.png",
   "keywords": ["node", "express", "static"]
 }
