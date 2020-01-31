@@ -79,10 +79,14 @@ If it is not running then we have to reset dynos:
   heroku ps:scale worker=1
 Now it should be running fine! Enjoy :)  
 
-### Deploy to Heroku:
+### If you are trying to lazy which you should not! (Deploying to Heroku)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/blob/master)
-  
+
+Choose App name and deploy!
+Follow from Step 7 and edit bot.py with your token!
+And finally deploy!
+
 ### Working Example
 
 ![working](https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/blob/master/Working.gif)
