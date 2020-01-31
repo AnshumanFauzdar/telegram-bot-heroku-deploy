@@ -1,0 +1,7 @@
+{
+  "name": "Node.js Sample",
+  "description": "Heroku Telegram python deploy",
+  "repository": "https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "express", "static"]
+}
