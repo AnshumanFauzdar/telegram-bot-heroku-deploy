@@ -81,7 +81,7 @@ Now it should be running fine! Enjoy :)
 
 ### Deploy to Heroku:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/heroku/node-js-getting-started/tree/master)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/blob/master)
   
 ### Working Example
 
