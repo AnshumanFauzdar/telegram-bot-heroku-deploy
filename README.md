@@ -78,6 +78,10 @@ If it is not running then we have to reset dynos:
 - ```python
   heroku ps:scale worker=1
 Now it should be running fine! Enjoy :)  
+
+### Deploy to Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
   
 ### Working Example
 
