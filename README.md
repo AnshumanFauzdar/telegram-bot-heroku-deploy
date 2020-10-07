@@ -87,7 +87,6 @@ Now it should be running fine! Enjoy :)
 
 ### If you are trying to lazy which you should not! (Deploying to Heroku)
 
-
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/blob/master)
 
 Choose App name and deploy!
