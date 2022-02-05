@@ -93,9 +93,5 @@ Choose App name and deploy!
 Follow from Step 7 and edit bot.py with your token!
 And finally deploy!
 
-### Working Example
-
-![working](https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/blob/master/Working.gif)
-
 ### Want a video tutorial?
 - Check It [Here!](https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy/issues/1)
