@@ -1,6 +1,11 @@
+import asyncio
 import logging
+import os
 
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram import Bot, Update
+from telegram.ext import Updater, CommandHandler, MessageHandler, ContextTypes, ApplicationBuilder
+
+from github_poller import GitHubIssuePoller
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -9,19 +14,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-# Define a few command handlers. These usually take the two arguments update and
-# context. Error handlers also receive the raised TelegramError object in error.
-def start(update, context):
-    """Send a message when the command /start is issued."""
-    update.message.reply_text('Hey this is your bot!')
-
-
-def help(update, context):
-    """Send a message when the command /help is issued."""
-    update.message.reply_text('Currently I am in Alpha stage, help me also!')
-
-def piracy(update, context):
-    update.message.reply_text('Ahhan, FBI wants to know your location!')
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
 
 
 def echo(update, context):
@@ -36,32 +30,19 @@ def error(update, context):
 
 def main():
     """Start the bot."""
-    # Create the Updater and pass it your bot's token.
-    # Make sure to set use_context=True to use the new context based callbacks
-    # Post version 12 this will no longer be necessary
-    updater = Updater("//TOKEN//", use_context=True)
+    tg_token = os.environ["TG_TOKEN"]
 
-    # Get the dispatcher to register handlers
-    dp = updater.dispatcher
+    application = ApplicationBuilder().token(tg_token).build()
 
-    # on different commands - answer in Telegram
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", help))
-    dp.add_handler(CommandHandler("piracy", piracy))
+    github_issues = GitHubIssuePoller()
 
-    # on noncommand i.e message - echo the message on Telegram
-    dp.add_handler(MessageHandler(Filters.text, echo))
+    loop = asyncio.get_event_loop()
 
-    # log all errors
-    dp.add_error_handler(error)
+    start_handler = CommandHandler('start', start)
+    application.add_handler(start_handler)
 
-    # Start the Bot
-    updater.start_polling()
-
-    # Run the bot until you press Ctrl-C or the process receives SIGINT,
-    # SIGTERM or SIGABRT. This should be used most of the time, since
-    # start_polling() is non-blocking and will stop the bot gracefully.
-    updater.idle()
+    github_issues.get_issues()
+    application.run_polling()
 
 
 if __name__ == '__main__':
