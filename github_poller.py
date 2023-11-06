@@ -28,14 +28,15 @@ class GitHubIssuePoller:
         token = os.environ['GH_TOKEN']
         self.auth = Auth.Token(token)
         self.g = Github(auth=self.auth)
+        self.repo = g.get_repo('boriskhodok/wowsuptime')
 
     def get_issues(self):
         asyncio.run(self.poll_issues())
 
-    async def poll_issues(self) -> None:
+    async def poll_issues(self):
         while self.running:
             print("Polling issues")
-            self.issues = self.g.search_issues("is:issue is:open")
+            self.issues = self.g.get_issues(state='open')
 
             print("Got issues: " + str(self.issues.totalCount))
             await asyncio.sleep(30)
