@@ -1,7 +1,7 @@
 {
-  "name": "Heroku Telegram python deploy",
-  "description": "Heroku Telegram python deploy",
-  "repository": "https://github.com/AnshumanFauzdar/telegram-bot-heroku-deploy",
+  "name": "World of Warships Telegram Bot",
+  "description": "World of Warships Telegram Bot, sends message if there are issues reaching web resources",
+  "repository": "boriskhodok/uptime-telegram-bot-heroku-deploy",
   "logo": "http://pngimg.com/uploads/telegram/telegram_PNG36.png",
-  "keywords": ["node", "express", "static"]
+  "keywords": ["python", "telegram", "wows"]
 }
