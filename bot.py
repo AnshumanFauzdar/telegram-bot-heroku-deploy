@@ -15,12 +15,10 @@ logger = logging.getLogger(__name__)
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    chat_id = update.effective_chat.id
     await context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
-
-
-def echo(update, context):
-    """Echo the user message."""
-    update.message.reply_text(update.message.text)
+    logger.info("Adding chat to the list: " + str(chat_id))
+    GitHubIssuePoller.add_chat(chat_id)
 
 
 def error(update, context):
@@ -34,14 +32,13 @@ def main():
 
     application = ApplicationBuilder().token(tg_token).build()
 
-    github_issues = GitHubIssuePoller()
-
-    loop = asyncio.get_event_loop()
+    github_issues = GitHubIssuePoller(application)
 
     start_handler = CommandHandler('start', start)
     application.add_handler(start_handler)
 
-    github_issues.get_issues()
+    asyncio.get_event_loop().create_task(github_issues.poll_issues())
+
     application.run_polling()
 
 
