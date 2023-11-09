@@ -1,17 +1,11 @@
 import asyncio
-from datetime import datetime
-from multiprocessing import get_logger
 import logging
-from typing import Any
-
-from github import Github
-from github import Auth
 import os
+from datetime import datetime
 
-from telegram._bot import BT
-from telegram.error import TimedOut
-from telegram.ext import CallbackContext, ExtBot, Application
-from telegram.ext._utils.types import CCT, UD, CD, BD
+from github import Auth
+from github import Github
+from telegram.ext import Application
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +18,7 @@ class WebhookUpdate:
 class GitHubIssuePoller:
     chats = []
 
-    def __init__(self, application: "Application[BT, CCT, UD, CD, BD, Any]"):
+    def __init__(self, application: Application):
         with open("chats.txt") as f:
             for line in f.readlines():
                 self.chats.append(int(line))
@@ -33,7 +27,7 @@ class GitHubIssuePoller:
         token = os.environ['GH_TOKEN']
         self.auth = Auth.Token(token)
         self.g = Github(auth=self.auth)
-        self.repo = self.g.get_repo('boriskhodok/wowsuptime')
+        self.repo = self.g.get_repo(os.environ['GH_REPO'])
         self.application = application
         self.current_issues = {}
 
@@ -49,7 +43,7 @@ class GitHubIssuePoller:
                         await self._process_issues(chat_id)
                 logger.info("Got issues: " + str(self.issues.totalCount))
             except Exception as e:
-                logger.error("Exception: " + str(type(e)) + " " + e.message)
+                logger.error("Exception: " + str(type(e)) + " " + str(e))
             await asyncio.sleep(30)
 
     async def _process_issues(self, chat_id):
@@ -68,7 +62,6 @@ class GitHubIssuePoller:
                     message = message.replace("is", "is still")
 
                     await self._send_message_to_chat(chat_id, message)
-
 
     @staticmethod
     def _issue_to_message(issue) -> str:
