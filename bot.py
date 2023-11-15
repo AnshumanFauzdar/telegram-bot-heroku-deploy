@@ -6,6 +6,7 @@ from telegram import Bot, Update
 from telegram.ext import Updater, CommandHandler, MessageHandler, ContextTypes, ApplicationBuilder
 
 from github_poller import GitHubIssuePoller
+from pinger import SitePinger
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -32,12 +33,13 @@ def main():
 
     application = ApplicationBuilder().token(tg_token).build()
 
-    github_issues = GitHubIssuePoller(application)
+    pinger = SitePinger(application)
 
     start_handler = CommandHandler('start', start)
     application.add_handler(start_handler)
 
-    asyncio.get_event_loop().create_task(github_issues.poll_issues())
+    asyncio.get_event_loop().create_task(pinger.ping_sites())
+    asyncio.get_event_loop().create_task(pinger.check_sites_and_send_message())
 
     application.run_polling()
 
