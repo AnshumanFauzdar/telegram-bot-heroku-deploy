@@ -5,7 +5,6 @@ from datetime import datetime
 
 import aiohttp
 import yaml
-from aiohttp import ClientConnectorError
 from telegram.ext import Application
 from yaml import Loader
 
@@ -39,6 +38,9 @@ class SitePinger:
         with open("chats.txt") as f:
             for line in f.readlines():
                 self.chats.append(int(line))
+
+        self.semaphore = asyncio.Semaphore(10)
+
         self.sites = _process_sites(yaml.load(open("sites.yml"), Loader=Loader)["sites"])
         self.application = application
 
@@ -48,20 +50,17 @@ class SitePinger:
             if not self.sites[name]["isUp"]:
                 if down_since_diff > 15:
                     self.sites[name]["downSince"] = datetime.now()
-                    message = "🛑" + name + " is down"
-                    self._send_message_to_chats(message)
-            else:
-                if 15 < down_since_diff < 20:
-                    message = "🟢" + name + " is up"
-                    self._send_message_to_chats(message)
+                    message = "🛑 " + self.sites[name]["url"] + " is down"
+                    await self._send_message_to_chats(message)
         await asyncio.sleep(300)
 
     async def ping_sites(self):
         while self.running:
-            async with aiohttp.ClientSession() as session:
-                for name in self.sites.keys():
-                    await self._ping_site(name, session)
-            await asyncio.sleep(30)
+            async with self.semaphore:
+                async with aiohttp.ClientSession() as session:
+                    for name in self.sites.keys():
+                        await self._ping_site(name, session)
+            await asyncio.sleep(300)
 
     async def _ping_site(self, name, session):
         try:
@@ -71,21 +70,29 @@ class SitePinger:
             response_time = int(round(time.monotonic() - start, 3) * 1000)
             self.sites[name]["responseStatus"] = status
             if status < 500:
+                if not self.sites[name]["isUp"]:
+                    message = "🟢 " + self.sites[name]["url"] + " is up"
+                    await self._send_message_to_chats(message)
                 self.sites[name]["isUp"] = True
             else:
+                if self.sites[name]["isUp"]:
+                    message = "🛑 " + self.sites[name]["url"] + " is down (Server Error)"
+                    await self._send_message_to_chats(message)
                 self.sites[name]["isUp"] = False
             self.sites[name]["responseTime"] = response_time
             logger.info(str(status) + " " + str(response_time) + " " + self.sites[name]["url"])
-        except ClientConnectorError as e:
+        except Exception as e:
+            if self.sites[name]["isUp"]:
+                message = "🛑 " + self.sites[name]["url"] + " is down"
+                await self._send_message_to_chats(message)
             self.sites[name]["isUp"] = False
             self.sites[name]["responseTime"] = 0
-            logger.error(str(e.os_error) + " " + self.sites[name]["url"])
+            logger.error(str(e) + " " + self.sites[name]["url"])
 
     async def _send_message_to_chat(self, chat_id, message):
         await self.application.bot.send_message(chat_id, message,
-                                                parse_mode="Markdown",
                                                 disable_web_page_preview=True)
-        await asyncio.sleep(1)
+        await asyncio.sleep(5)
 
     @classmethod
     def add_chat(cls, chat_id: int):
@@ -94,6 +101,6 @@ class SitePinger:
                 cls.chats.append(chat_id)
                 f.write(str(chat_id))
 
-    def _send_message_to_chats(self, message):
+    async def _send_message_to_chats(self, message):
         for chat_id in self.chats:
-            self._send_message_to_chat(chat_id, message)
+            await self._send_message_to_chat(chat_id, message)

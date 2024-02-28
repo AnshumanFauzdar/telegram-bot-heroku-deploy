@@ -29,8 +29,6 @@ sites:
     url: https://blog.worldofwarships.com
   - name: dockyard.worldofwarships.com
     url: https://dockyard.worldofwarships.com
-  # - name: forum.worldofwarships.com
-  #  url: https://forum.worldofwarships.com
   - name: logbook.worldofwarships.com
     url: https://logbook.worldofwarships.com
   - name: friends.worldofwarships.com
@@ -51,8 +49,6 @@ sites:
     url: https://armory.worldofwarships.asia
   - name: dockyard.worldofwarships.asia
     url: https://dockyard.worldofwarships.asia
-  # - name: forum.worldofwarships.asia
-  #  url: https://forum.worldofwarships.asia
   - name: logbook.worldofwarships.asia
     url: https://logbook.worldofwarships.asia
   - name: friends.worldofwarships.asia
@@ -72,8 +68,6 @@ sites:
     url: https://armory.wowsgame.cn
   - name: dockyard.wowsgame.cn
     url: https://dockyard.wowsgame.cn
-  # - name: forum.worldofwarships.asia
-  #  url: https://forum.worldofwarships.asia
   - name: logbook.wowsgame.cn
     url: https://logbook.wowsgame.cn
   - name: friends.wowsgame.cn

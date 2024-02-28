@@ -10,11 +10,6 @@ from telegram.ext import Application
 logger = logging.getLogger(__name__)
 
 
-class WebhookUpdate:
-    user_id: int
-    payload: str
-
-
 class GitHubIssuePoller:
     chats = []
 
@@ -57,7 +52,8 @@ class GitHubIssuePoller:
                 await self._send_message_to_chat(chat_id, message)
 
             else:
-                if diff_minutes_round(datetime.now(), self.current_issues[issue.id]["time"]) > 5:
+                if diff_minutes_round(datetime.now(), self.current_issues[issue.id]["time"]) > 15:
+                    self.current_issues[issue.id]["time"] = datetime.now()
                     message = self._issue_to_message(issue)
                     message = message.replace("is", "is still")
 
