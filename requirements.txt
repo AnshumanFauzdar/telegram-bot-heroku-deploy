@@ -3,3 +3,6 @@ certifi
 tornado>=5.1
 cryptography
 python-telegram-bot
+PyGithub
+PyYAML
+aiohttp

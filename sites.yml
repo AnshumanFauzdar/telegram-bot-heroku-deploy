@@ -1,0 +1,80 @@
+sites:
+# eu
+  - name: worldofwarships.eu
+    url: https://worldofwarships.eu
+  - name: clans.worldofwarships.eu
+    url: https://clans.worldofwarships.eu
+  - name: armory.worldofwarships.eu
+    url: https://armory.worldofwarships.eu
+  - name: dockyard.worldofwarships.eu
+    url: https://dockyard.worldofwarships.eu
+  - name: logbook.worldofwarships.eu
+    url: https://logbook.worldofwarships.eu
+  - name: friends.worldofwarships.eu
+    url: https://friends.worldofwarships.eu/en/about
+  - name: warehouse.worldofwarships.eu
+    url: https://warehouse.worldofwarships.eu
+  - name: shop.worldofwarships.eu
+    url: https://shop.worldofwarships.eu/
+    headers:
+      - "User-Agent: Safari/537.36 WOWS/1.0"
+  # us
+  - name: worldofwarships.com
+    url: https://worldofwarships.com
+  - name: clans.worldofwarships.com
+    url: https://clans.worldofwarships.com
+  - name: armory.worldofwarships.com
+    url: https://armory.worldofwarships.com
+  - name: blog.worldofwarships.com
+    url: https://blog.worldofwarships.com
+  - name: dockyard.worldofwarships.com
+    url: https://dockyard.worldofwarships.com
+  - name: logbook.worldofwarships.com
+    url: https://logbook.worldofwarships.com
+  - name: friends.worldofwarships.com
+    url: https://friends.worldofwarships.com/en/about
+  - name: warehouse.worldofwarships.com
+    url: https://warehouse.worldofwarships.com
+  - name: shop.worldofwarships.com
+    url: https://shop.worldofwarships.com/
+    headers:
+      - "User-Agent: Safari/537.36 WOWS/1.0"
+
+  # asia
+  - name: worldofwarships.asia
+    url: https://worldofwarships.asia
+  - name: clans.worldofwarships.asia
+    url: https://clans.worldofwarships.asia
+  - name: armory.worldofwarships.asia
+    url: https://armory.worldofwarships.asia
+  - name: dockyard.worldofwarships.asia
+    url: https://dockyard.worldofwarships.asia
+  - name: logbook.worldofwarships.asia
+    url: https://logbook.worldofwarships.asia
+  - name: friends.worldofwarships.asia
+    url: https://friends.worldofwarships.asia/en/about
+  - name: warehouse.worldofwarships.asia
+    url: https://warehouse.worldofwarships.asia
+  - name: shop.worldofwarships.asia
+    url: https://shop.worldofwarships.asia/
+    headers:
+      - "User-Agent: Safari/537.36 WOWS/1.0"
+    # china
+  - name: wowsgame.cn
+    url: https://wowsgame.cn
+  - name: clans.wowsgame.cn
+    url: https://clans.wowsgame.cn
+  - name: armory.wowsgame.cn
+    url: https://armory.wowsgame.cn
+  - name: dockyard.wowsgame.cn
+    url: https://dockyard.wowsgame.cn
+  - name: logbook.wowsgame.cn
+    url: https://logbook.wowsgame.cn
+  - name: friends.wowsgame.cn
+    url: https://friends.wowsgame.cn/en/about
+  - name: warehouse.wowsgame.cn
+    url: https://warehouse.wowsgame.cn
+  - name: shop.wows.360.cn
+    url: https://shop.wows.360.cn
+    headers:
+      - "User-Agent: Safari/537.36 WOWS/1.0"
